@@ -5,200 +5,346 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jane Doe - Personal Trainer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --color-dark: #16382b;
+            --color-green: #00d084;
+            --color-blue: #0693e3;
+            --color-light: #f5f5f5;
+            --color-custom-gray: #222222;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-        .hero-section {
-            background-color: #f3f4f6; /* A light gray background as a fallback */
+        
+        .bg-dark { background-color: var(--color-dark); }
+        .bg-green { background-color: var(--color-green); }
+        .bg-blue { background-color: var(--color-blue); }
+        .bg-light { background-color: var(--color-light); }
+        .bg-custom-gray { background-color: var(--color-custom-gray); }
+        
+        .text-dark { color: var(--color-dark); }
+        .text-green { color: var(--color-green); }
+        .text-blue { color: var(--color-blue); }
+        .text-light { color: var(--color-light); }
+        .text-custom-gray { color: var(--color-custom-gray); }
+        
+        .hover\:bg-green:hover { background-color: var(--color-green); }
+        .hover\:bg-blue:hover { background-color: var(--color-blue); }
+        .hover\:text-green:hover { color: var(--color-green); }
+        .hover\:text-blue:hover { color: var(--color-blue); }
+        
+        .border-green { border-color: var(--color-green); }
+        .border-blue { border-color: var(--color-blue); }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-blue) 100%);
         }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+        }
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .pulse-green {
+            animation: pulseGreen 2s infinite;
+        }
+        @keyframes pulseGreen {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 208, 132, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 208, 132, 0); }
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .bg-green-gradient {
+            background: linear-gradient(135deg, var(--color-green), var(--color-blue));
+        }
+        .bg-green-10 { background-color: rgba(0, 208, 132, 0.1); }
+        .bg-green-90 { background-color: rgba(0, 208, 132, 0.9); }
+        .bg-blue-20 { background-color: rgba(6, 147, 227, 0.2); }
+        .bg-green-20 { background-color: rgba(0, 208, 132, 0.2); }
+        .bg-custom-gray-90 { background-color: rgba(34, 34, 34, 0.9); }
+        .text-custom-gray-80 { color: rgba(34, 34, 34, 0.8); }
+        .text-custom-gray-70 { color: rgba(34, 34, 34, 0.7); }
+        .text-custom-gray-40 { color: rgba(34, 34, 34, 0.4); }
+        .text-white-90 { color: rgba(255, 255, 255, 0.9); }
+        .text-white-80 { color: rgba(255, 255, 255, 0.8); }
+        .text-white-60 { color: rgba(255, 255, 255, 0.6); }
+        .text-white-50 { color: rgba(255, 255, 255, 0.5); }
+        .border-white-20 { border-color: rgba(255, 255, 255, 0.2); }
+        .hover\:border-green-20:hover { border-color: rgba(0, 208, 132, 0.2); }
+        .hover\:border-blue-20:hover { border-color: rgba(6, 147, 227, 0.2); }
+        .hover\:bg-green-10:hover { background-color: rgba(0, 208, 132, 0.1); }
+        .hover\:bg-green-90:hover { background-color: rgba(0, 208, 132, 0.9); }
+        .hover\:bg-custom-gray-90:hover { background-color: rgba(34, 34, 34, 0.9); }
+        .hover\:bg-white-90:hover { background-color: rgba(255, 255, 255, 0.9); }
+        .hover\:bg-white-30:hover { background-color: rgba(255, 255, 255, 0.3); }
+        .shadow-green-25:hover { box-shadow: 0 25px 50px -12px rgba(0, 208, 132, 0.25); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-light text-custom-gray">
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-md fixed w-full z-10">
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg fixed w-full z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-indigo-600">JD Fitness</a>
+            <a href="#" class="text-2xl font-bold text-dark">JD Fitness</a>
             <div class="hidden md:flex space-x-8">
-                <a href="#about-me" class="text-gray-600 hover:text-indigo-600">About Me</a>
-                <a href="#why-me" class="text-gray-600 hover:text-indigo-600">Why Me</a>
-                <a href="#plans" class="text-gray-600 hover:text-indigo-600">Plans</a>
-                <a href="#contact" class="text-gray-600 hover:text-indigo-600">Contact</a>
+                <a href="#about-me" class="text-custom-gray hover:text-green transition-colors duration-300 font-medium">About Me</a>
+                <a href="#why-me" class="text-custom-gray hover:text-green transition-colors duration-300 font-medium">Why Me</a>
+                <a href="#plans" class="text-custom-gray hover:text-green transition-colors duration-300 font-medium">Plans</a>
+                <a href="#contact" class="text-custom-gray hover:text-green transition-colors duration-300 font-medium">Contact</a>
             </div>
-            <a href="#contact" class="hidden md:block bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-300">Free Consultation</a>
+            <a href="#contact" class="hidden md:block bg-green text-white py-3 px-6 rounded-full hover:bg-green/90 transition-all duration-300 font-semibold pulse-green">Free Consultation</a>
              <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
+            <button id="mobile-menu-button" class="md:hidden text-custom-gray focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#about-me" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">About Me</a>
-            <a href="#why-me" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Why Me</a>
-            <a href="#plans" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Plans</a>
-            <a href="#contact" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Contact</a>
-            <a href="#contact" class="block py-2 px-4 text-sm bg-indigo-600 text-white text-center hover:bg-indigo-700">Free Consultation</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md">
+            <a href="#about-me" class="block py-3 px-6 text-custom-gray hover:bg-green/10 hover:text-green transition-all">About Me</a>
+            <a href="#why-me" class="block py-3 px-6 text-custom-gray hover:bg-green/10 hover:text-green transition-all">Why Me</a>
+            <a href="#plans" class="block py-3 px-6 text-custom-gray hover:bg-green/10 hover:text-green transition-all">Plans</a>
+            <a href="#contact" class="block py-3 px-6 text-custom-gray hover:bg-green/10 hover:text-green transition-all">Contact</a>
+            <a href="#contact" class="block py-3 mx-6 mb-4 text-center bg-green text-white rounded-full hover:bg-green/90 transition-all">Free Consultation</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-section pt-32 pb-16 md:pt-40 md:pb-24">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 items-center gap-8">
+    <header class="hero-gradient pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-20 h-20 bg-green rounded-full blur-xl"></div>
+            <div class="absolute bottom-20 right-10 w-32 h-32 bg-blue rounded-full blur-2xl"></div>
+            <div class="absolute top-1/2 left-1/3 w-16 h-16 bg-green rounded-full blur-lg"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 grid md:grid-cols-2 items-center gap-12 relative">
             <!-- Left Column: Text -->
-            <div class="text-center md:text-left">
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-gray-900">Transform Your Body, Transform Your Life</h1>
-                <p class="text-lg md:text-xl mb-8 text-gray-600">Achieve your fitness goals with personalized training programs designed just for you.</p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-                    <a href="#plans" class="bg-indigo-600 text-white py-3 px-8 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition duration-300 inline-block text-center">View My Plans</a>
-                    <a href="#about-me" class="bg-gray-200 text-gray-800 py-3 px-8 rounded-lg text-lg font-semibold hover:bg-gray-300 transition duration-300 inline-block text-center">About Me</a>
+            <div class="text-center md:text-left text-white">
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 animate-fade-in">Transform Your <span class="text-green">Body</span>, Transform Your <span class="text-blue">Life</span></h1>
+                <p class="text-xl md:text-2xl mb-10 text-white/90 font-light">Achieve your fitness goals with personalized training programs designed just for you.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center md:justify-start">
+                    <a href="#plans" class="bg-green text-white py-4 px-10 rounded-full text-lg font-semibold hover:bg-green-90 transition-all duration-300 inline-block text-center shadow-2xl hover:shadow-green-25">View My Plans</a>
+                    <a href="#about-me" class="glass-effect text-white py-4 px-10 rounded-full text-lg font-semibold hover:bg-white-30 transition-all duration-300 inline-block text-center">About Me</a>
                 </div>
             </div>
             <!-- Right Column: Image -->
             <div class="flex justify-center">
-                <img src="https://placehold.co/600x800/e2e8f0/333333?text=Your+Image" alt="Personal Trainer Jane Doe" class="rounded-lg shadow-2xl max-w-xs sm:max-w-sm md:max-w-md">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-green to-blue rounded-3xl blur-2xl opacity-30 floating-animation"></div>
+                    <img src="https://placehold.co/600x800/e2e8f0/333333?text=Your+Image" alt="Personal Trainer Jane Doe" class="relative rounded-3xl shadow-2xl max-w-xs sm:max-w-sm md:max-w-md">
+                </div>
             </div>
         </div>
     </header>
 
     <!-- About Me Section -->
-    <section id="about-me" class="bg-white scroll-mt-20">
-        <div class="container mx-auto px-6 py-16">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+    <section id="about-me" class="bg-white scroll-mt-20 py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
-                    <p class="text-gray-600 mb-6">
-                        Hi, I'm Jane! My journey into fitness started with a simple goal: to feel stronger and more confident in my own skin. This personal transformation ignited a passion to help others achieve the same. I believe fitness is not just about the physical results, but about building mental resilience, discipline, and a positive lifestyle. My approach is to make fitness accessible, enjoyable, and sustainable for everyone, regardless of their starting point.
+                    <div class="mb-8">
+                        <span class="text-green font-semibold text-lg">Get to know me</span>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-dark">About Me</h2>
+                    </div>
+                    <p class="text-custom-gray-80 mb-8 text-lg leading-relaxed">
+                        Hi, I'm Jane! My journey into fitness started with a simple goal: to feel stronger and more confident in my own skin. This personal transformation ignited a passion to help others achieve the same. I believe fitness is not just about the physical results, but about building mental resilience, discipline, and a positive lifestyle.
                     </p>
-                    <h3 class="text-2xl font-bold mb-4">My Certifications</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-2">
-                        <li>Certificate III in Fitness - Australian Institute of Fitness (AIF)</li>
-                        <li>Certificate IV in Fitness - Australian Institute of Fitness (AIF)</li>
-                        <li>Certified Nutrition Coach</li>
-                        <li>First Aid & CPR Certified</li>
-                    </ul>
+                    <div class="bg-light p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6 text-dark">My Certifications</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green rounded-full mr-4"></div>
+                                <span class="text-custom-gray">Certificate III in Fitness - Australian Institute of Fitness (AIF)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-blue rounded-full mr-4"></div>
+                                <span class="text-custom-gray">Certificate IV in Fitness - Australian Institute of Fitness (AIF)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green rounded-full mr-4"></div>
+                                <span class="text-custom-gray">Certified Nutrition Coach</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-blue rounded-full mr-4"></div>
+                                <span class="text-custom-gray">First Aid & CPR Certified</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="flex justify-center">
-                    <img src="https://placehold.co/600x600/a0aec0/ffffff?text=About+Me+Image" alt="Jane Doe in a friendly pose" class="rounded-lg shadow-xl max-w-sm md:max-w-md">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-br from-green/20 to-blue/20 rounded-3xl"></div>
+                        <img src="https://placehold.co/600x600/a0aec0/ffffff?text=About+Me+Image" alt="Jane Doe in a friendly pose" class="relative rounded-3xl shadow-xl max-w-sm md:max-w-md">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-6 py-16">
-
-        <!-- Why Choose Me Section -->
-        <section id="why-me" class="mb-16 scroll-mt-20">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Why Choose Me?</h2>
+    <!-- Why Choose Me Section -->
+    <section id="why-me" class="bg-light py-20 scroll-mt-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-green font-semibold text-lg">What makes me different</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-dark mb-4">Why Choose Me?</h2>
+                <p class="text-custom-gray-70 text-xl max-w-2xl mx-auto">I combine proven methods with personalized care to help you achieve lasting results</p>
+            </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Personalized+Plans" alt="Personalized Plans" class="w-full h-48 object-cover">
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-bold mb-2">Personalized Plans</h3>
-                        <p class="text-gray-600">Your fitness journey is unique. I create custom workout and nutrition plans tailored to your specific goals, body type, and lifestyle.</p>
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/00d084/ffffff?text=Personalized+Plans" alt="Personalized Plans" class="w-full h-56 object-cover">
+                        <div class="absolute top-6 left-6 w-12 h-12 bg-green rounded-full flex items-center justify-center">
+                            <span class="text-white text-xl font-bold">1</span>
+                        </div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold mb-4 text-dark">Personalized Plans</h3>
+                        <p class="text-custom-gray-70 leading-relaxed">Your fitness journey is unique. I create custom workout and nutrition plans tailored to your specific goals, body type, and lifestyle.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Proven+Results" alt="Proven Results" class="w-full h-48 object-cover">
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-bold mb-2">Proven Results</h3>
-                        <p class="text-gray-600">With years of experience and a track record of success, I use evidence-based methods to help you achieve lasting results safely and efficiently.</p>
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/0693e3/ffffff?text=Proven+Results" alt="Proven Results" class="w-full h-56 object-cover">
+                        <div class="absolute top-6 left-6 w-12 h-12 bg-blue rounded-full flex items-center justify-center">
+                            <span class="text-white text-xl font-bold">2</span>
+                        </div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold mb-4 text-dark">Proven Results</h3>
+                        <p class="text-custom-gray-70 leading-relaxed">With years of experience and a track record of success, I use evidence-based methods to help you achieve lasting results safely and efficiently.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                     <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Motivation" alt="Motivation & Support" class="w-full h-48 object-cover">
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-bold mb-2">Motivation & Support</h3>
-                        <p class="text-gray-600">I'm not just your trainer; I'm your partner. I'll provide the motivation, accountability, and support you need to stay on track and crush your goals.</p>
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/16382b/ffffff?text=Support" alt="Motivation & Support" class="w-full h-56 object-cover">
+                        <div class="absolute top-6 left-6 w-12 h-12 bg-dark rounded-full flex items-center justify-center">
+                            <span class="text-white text-xl font-bold">3</span>
+                        </div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold mb-4 text-dark">Motivation & Support</h3>
+                        <p class="text-custom-gray-70 leading-relaxed">I'm not just your trainer; I'm your partner. I'll provide the motivation, accountability, and support you need to stay on track.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Subscription Plans Section -->
-        <section id="plans" class="mb-16 scroll-mt-20">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Subscription Plans</h2>
-            <div class="grid lg:grid-cols-3 gap-8">
+    <!-- Subscription Plans Section -->
+    <section id="plans" class="bg-white py-20 scroll-mt-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-green font-semibold text-lg">Choose your journey</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-dark mb-4">Subscription Plans</h2>
+                <p class="text-custom-gray/70 text-xl max-w-2xl mx-auto">Flexible plans designed to fit your lifestyle and budget</p>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Plan 1: Starter -->
-                <div class="bg-white p-8 rounded-lg shadow-md flex flex-col">
-                    <h3 class="text-2xl font-bold text-center mb-4">Starter</h3>
-                    <p class="text-center text-gray-600 mb-6">Perfect for getting started on your fitness journey.</p>
-                    <p class="text-4xl font-bold text-center mb-6">$99<span class="text-lg font-normal">/mo</span></p>
-                    <ul class="space-y-4 text-gray-600 mb-8 flex-grow">
-                        <li class="flex items-center"><span class="text-indigo-600 mr-2">&#10003;</span> 2 sessions per week</li>
-                        <li class="flex items-center"><span class="text-indigo-600 mr-2">&#10003;</span> Custom workout plan</li>
-                        <li class="flex items-center"><span class="text-indigo-600 mr-2">&#10003;</span> Monthly progress tracking</li>
-                        <li class="flex items-center text-gray-400"><span class="mr-2">&#10007;</span> Nutrition guidance</li>
+                <div class="bg-light p-10 rounded-3xl shadow-lg flex flex-col card-hover border-2 border-transparent hover:border-green/20">
+                    <h3 class="text-3xl font-bold text-center mb-2 text-dark">Starter</h3>
+                    <p class="text-center text-custom-gray/70 mb-8">Perfect for getting started on your fitness journey.</p>
+                    <div class="text-center mb-8">
+                        <span class="text-5xl font-bold text-dark">$99</span>
+                        <span class="text-custom-gray/70 text-lg">/month</span>
+                    </div>
+                    <ul class="space-y-4 text-custom-gray/80 mb-10 flex-grow">
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> 2 sessions per week</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> Custom workout plan</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> Monthly progress tracking</li>
+                        <li class="flex items-center text-custom-gray/40"><span class="mr-3 text-xl">✗</span> Nutrition guidance</li>
                     </ul>
-                    <a href="#contact" class="w-full text-center bg-gray-200 text-gray-800 py-3 px-6 rounded-lg hover:bg-gray-300 transition duration-300">Choose Plan</a>
+                    <a href="#contact" class="w-full text-center bg-custom-gray text-white py-4 px-6 rounded-full hover:bg-custom-gray/90 transition-all duration-300 font-semibold">Choose Plan</a>
                 </div>
+                
                 <!-- Plan 2: Pro (Most Popular) -->
-                <div class="bg-indigo-600 text-white p-8 rounded-lg shadow-xl flex flex-col relative">
-                    <span class="absolute top-0 -translate-y-1/2 bg-yellow-400 text-gray-800 text-sm font-bold px-3 py-1 rounded-full left-1/2 -translate-x-1/2">Most Popular</span>
-                    <h3 class="text-2xl font-bold text-center mb-4">Pro</h3>
-                    <p class="text-center text-indigo-200 mb-6">Ideal for those committed to making a serious change.</p>
-                    <p class="text-4xl font-bold text-center mb-6">$149<span class="text-lg font-normal">/mo</span></p>
-                    <ul class="space-y-4 text-indigo-200 mb-8 flex-grow">
-                        <li class="flex items-center"><span class="mr-2">&#10003;</span> 3 sessions per week</li>
-                        <li class="flex items-center"><span class="mr-2">&#10003;</span> Custom workout plan</li>
-                        <li class="flex items-center"><span class="mr-2">&#10003;</span> Weekly progress tracking</li>
-                        <li class="flex items-center"><span class="mr-2">&#10003;</span> Full nutrition guidance</li>
+                <div class="bg-gradient-to-br from-green to-blue text-white p-10 rounded-3xl shadow-2xl flex flex-col relative scale-105 card-hover">
+                    <span class="absolute -top-4 bg-white text-dark text-sm font-bold px-6 py-2 rounded-full left-1/2 -translate-x-1/2 shadow-lg">Most Popular</span>
+                    <h3 class="text-3xl font-bold text-center mb-2">Pro</h3>
+                    <p class="text-center text-white/90 mb-8">Ideal for those committed to making a serious change.</p>
+                    <div class="text-center mb-8">
+                        <span class="text-5xl font-bold">$149</span>
+                        <span class="text-white/80 text-lg">/month</span>
+                    </div>
+                    <ul class="space-y-4 text-white/90 mb-10 flex-grow">
+                        <li class="flex items-center"><span class="mr-3 text-xl">✓</span> 3 sessions per week</li>
+                        <li class="flex items-center"><span class="mr-3 text-xl">✓</span> Custom workout plan</li>
+                        <li class="flex items-center"><span class="mr-3 text-xl">✓</span> Weekly progress tracking</li>
+                        <li class="flex items-center"><span class="mr-3 text-xl">✓</span> Full nutrition guidance</li>
                     </ul>
-                    <a href="#contact" class="w-full text-center bg-white text-indigo-600 py-3 px-6 rounded-lg font-semibold hover:bg-indigo-100 transition duration-300">Choose Plan</a>
+                    <a href="#contact" class="w-full text-center bg-white text-dark py-4 px-6 rounded-full font-bold hover:bg-white/90 transition-all duration-300">Choose Plan</a>
                 </div>
+                
                 <!-- Plan 3: Premium -->
-                <div class="bg-white p-8 rounded-lg shadow-md flex flex-col">
-                    <h3 class="text-2xl font-bold text-center mb-4">Premium</h3>
-                    <p class="text-center text-gray-600 mb-6">The ultimate package for maximum results and support.</p>
-                    <p class="text-4xl font-bold text-center mb-6">$199<span class="text-lg font-normal">/mo</span></p>
-                    <ul class="space-y-4 text-gray-600 mb-8 flex-grow">
-                        <li class="flex items-center"><span class="text-indigo-600 mr-2">&#10003;</span> 4 sessions per week</li>
-                        <li class="flex items-center"><span class="text-indigo-600 mr-2">&#10003;</span> Custom workout plan</li>
-                        <li class="flex items-center"><span class="text-indigo-600 mr-2">&#10003;</span> Weekly progress tracking</li>
-                        <li class="flex items-center"><span class="text-indigo-600 mr-2">&#10003;</span> Full nutrition guidance & support</li>
+                <div class="bg-light p-10 rounded-3xl shadow-lg flex flex-col card-hover border-2 border-transparent hover:border-blue/20">
+                    <h3 class="text-3xl font-bold text-center mb-2 text-dark">Premium</h3>
+                    <p class="text-center text-custom-gray/70 mb-8">The ultimate package for maximum results and support.</p>
+                    <div class="text-center mb-8">
+                        <span class="text-5xl font-bold text-dark">$199</span>
+                        <span class="text-custom-gray/70 text-lg">/month</span>
+                    </div>
+                    <ul class="space-y-4 text-custom-gray/80 mb-10 flex-grow">
+                        <li class="flex items-center"><span class="text-blue mr-3 text-xl">✓</span> 4 sessions per week</li>
+                        <li class="flex items-center"><span class="text-blue mr-3 text-xl">✓</span> Custom workout plan</li>
+                        <li class="flex items-center"><span class="text-blue mr-3 text-xl">✓</span> Weekly progress tracking</li>
+                        <li class="flex items-center"><span class="text-blue mr-3 text-xl">✓</span> Full nutrition guidance & support</li>
                     </ul>
-                    <a href="#contact" class="w-full text-center bg-gray-200 text-gray-800 py-3 px-6 rounded-lg hover:bg-gray-300 transition duration-300">Choose Plan</a>
+                    <a href="#contact" class="w-full text-center bg-custom-gray text-white py-4 px-6 rounded-full hover:bg-custom-gray/90 transition-all duration-300 font-semibold">Choose Plan</a>
                 </div>
             </div>
-        </section>
-
-    </main>
+        </div>
+    </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="bg-gray-100 scroll-mt-20">
-        <div class="container mx-auto px-6 py-16 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Journey?</h2>
-            <p class="text-lg text-gray-600 mb-8">Book a free, no-obligation 45-minute consultation session today!</p>
-            <a href="mailto:jane.doe.fitness@example.com?subject=Free%20Consultation%20Request" class="bg-indigo-600 text-white py-3 px-8 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition duration-300 inline-block">Book Your Free Session</a>
+    <section id="contact" class="bg-dark scroll-mt-20 py-20 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 right-10 w-32 h-32 bg-green rounded-full blur-2xl"></div>
+            <div class="absolute bottom-10 left-10 w-24 h-24 bg-blue rounded-full blur-xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 text-center relative">
+            <span class="text-green font-semibold text-lg">Let's get started</span>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Ready to Start Your Journey?</h2>
+            <p class="text-xl text-white/80 mb-12 max-w-2xl mx-auto">Book a free, no-obligation 45-minute consultation session today and take the first step toward your transformation!</p>
+            <a href="mailto:jane.doe.fitness@example.com?subject=Free%20Consultation%20Request" class="bg-green text-white py-4 px-10 rounded-full text-xl font-semibold hover:bg-green/90 transition-all duration-300 inline-block shadow-2xl hover:shadow-green/25 pulse-green">Book Your Free Session</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white">
-        <div class="container mx-auto px-6 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <a href="#" class="text-2xl font-bold text-white">JD Fitness</a>
-                    <p class="text-gray-400 mt-2">Your partner in health and fitness.</p>
+    <footer class="bg-custom-gray text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <a href="#" class="text-3xl font-bold text-white mb-2 block">JD Fitness</a>
+                    <p class="text-white/60">Your partner in health and fitness transformation.</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white">
+                    <a href="#" class="text-white/60 hover:text-green transition-colors duration-300 p-2">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white">
+                    <a href="#" class="text-white/60 hover:text-blue transition-colors duration-300 p-2">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white">
+                    <a href="#" class="text-white/60 hover:text-green transition-colors duration-300 p-2">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0-2a7 7 0 110 14 7 7 0 010-14zm4.5-1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" /></svg>
                     </a>
                 </div>
             </div>
-            <div class="mt-8 border-t border-gray-700 pt-6 text-center">
-                <p class="text-gray-500">&copy; 2024 Jane Doe Fitness. All Rights Reserved.</p>
+            <div class="border-t border-white/20 pt-8 text-center">
+                <p class="text-white/50">&copy; 2024 Jane Doe Fitness. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -229,6 +375,16 @@
                     });
                 }
             });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
         });
     </script>
 </body>
