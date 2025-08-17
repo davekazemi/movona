@@ -1,0 +1,149 @@
+// Movona Fitness Website JavaScript
+
+// Plan links configuration for Trainerize integration
+const baseUrlPlans = "https://www.trainerize.me/profile/movona/?planGUID=";
+const choosePlanIDs = {
+    annually: {
+        foundation: "4d76d742d95b4952bf3c082176bd22a4",
+        basic:  "4d76d742d95b4952bf3c082176bd22a4",
+        premium:  "4d76d742d95b4952bf3c082176bd22a4"
+    },
+    monthly: {
+        foundation: "4d76d742d95b4952bf3c082176bd22a4",
+        basic: "4d76d742d95b4952bf3c082176bd22a4",
+        premium: "4d76d742d95b4952bf3c082176bd22a4"
+    }
+};
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    // Smooth scrolling for anchor links (exclude plan buttons)
+    document.querySelectorAll('a[href^="#"]:not(.plan-button)').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Close mobile menu on link click
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+
+            const targetElement = document.querySelector(this.getAttribute('href'));
+            if(targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Add scroll effect to navigation
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('shadow-xl');
+        } else {
+            nav.classList.remove('shadow-xl');
+        }
+    });
+
+    // Initialize plan buttons with default monthly links
+    function updatePlanButtonLinks(billingType = 'monthly') {
+        const planButtons = document.querySelectorAll('.plan-button');
+        
+        planButtons.forEach(button => {
+            const planName = getPlanNameFromButton(button);
+            if (planName && choosePlanIDs[billingType] && choosePlanIDs[billingType][planName]) {
+                const planGUID = choosePlanIDs[billingType][planName];
+                button.href = baseUrlPlans + planGUID;
+                button.target = '_blank'; // Open in new tab
+            }
+        });
+    }
+
+    // Helper function to determine plan name from button context
+    function getPlanNameFromButton(button) {
+        const planCard = button.closest('.card-contrast');
+        if (!planCard) return null;
+        
+        const planTitle = planCard.querySelector('h3');
+        if (!planTitle) return null;
+        
+        const title = planTitle.textContent.toLowerCase();
+        
+        if (title.includes('foundation')) return 'foundation';
+        if (title.includes('personal') || title.includes('training')) return 'basic';
+        if (title.includes('transformation') || title.includes('premium')) return 'premium';
+        
+        return null;
+    }
+
+    // Initialize plan button links on page load
+    updatePlanButtonLinks('monthly');
+
+    // Billing toggle functionality
+    const billingToggle = document.getElementById('billing-toggle');
+    const toggleIndicator = document.getElementById('toggle-indicator');
+    const planPrices = document.querySelectorAll('.plan-price');
+    const planPeriods = document.querySelectorAll('.plan-period');
+    
+    let isAnnual = false;
+
+    if (billingToggle) {
+        billingToggle.addEventListener('click', () => {
+            isAnnual = !isAnnual;
+            
+            // Toggle visual state
+            billingToggle.classList.toggle('active');
+            
+            // Update prices and periods
+            planPrices.forEach(price => {
+                const monthlyPrice = parseInt(price.dataset.monthly);
+                const annualPrice = parseInt(price.dataset.annual);
+                
+                if (isAnnual) {
+                    price.textContent = `$${annualPrice}`;
+                } else {
+                    price.textContent = `$${monthlyPrice}`;
+                }
+            });
+
+            planPeriods.forEach(period => {
+                period.textContent = isAnnual ? '/year' : '/month';
+            });
+
+            // Update button links using choosePlanIDs and baseUrlPlans
+            updatePlanButtonLinks(isAnnual ? 'annually' : 'monthly');
+        });
+    }
+
+    // Add loading animations for better UX
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for animations
+    document.querySelectorAll('.card-hover').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+});
