@@ -290,59 +290,49 @@
                             </svg>
                         </div>
                     </div>
-                    
+                    <!-- App Download Buttons Row -->
+                    <div class="flex justify-center items-center space-x-4 mt-2">
+                        <a href="#" target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="h-12 w-auto">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Available_on_the_App_Store_%28black%29.png" alt="Download on the App Store" class="h-12 w-auto">
+                        </a>
+                    </div>
                     <!-- App Integration Icons -->
                     <div class="text-center">
                         <div class="flex justify-center items-center space-x-4 flex-wrap gap-3">
-                            <!-- Apple -->
-                            <div class="flex items-center space-x-2 bg-green/10 rounded-full px-3 py-1.5">
-                                <svg class="w-5 h-5 text-green" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                                </svg>
-                                <span class="text-contrast-medium text-xs font-medium">Apple</span>
-                            </div>
-                            
-                            <!-- Android -->
-                            <div class="flex items-center space-x-2 bg-green/10 rounded-full px-3 py-1.5">
-                                <svg class="w-5 h-5 text-green" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4653-6.02c-.9384-.8084-2.1929-1.2884-3.5318-1.2884-1.3389 0-2.5934.4801-3.5319 1.2884-.1651.1422-.1849.3906-.0427.5557.1422.1652.3907.1849.5558.0428.7532-.6477 1.7626-1.0039 2.8188-1.0039s2.0656.3562 2.8188 1.0039c.1651.1421.3936.1224.5558-.0428.1422-.1651.1224-.3935-.0428-.5557"/>
-                                </svg>
-                                <span class="text-contrast-medium text-xs font-medium">Android</span>
-                            </div>
-                            
-                            <!-- Strava -->
-                            <div class="flex items-center space-x-2 bg-green/10 rounded-full px-3 py-1.5">
-                                <svg class="w-5 h-5 text-green" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.206"/>
-                                </svg>
-                                <span class="text-contrast-medium text-xs font-medium">Strava</span>
-                            </div>
-                            
-                            <!-- Fitbit -->
-                            <div class="flex items-center space-x-2 bg-green/10 rounded-full px-3 py-1.5">
-                                <svg class="w-5 h-5 text-green" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M13.298 1.037c0 .55-.445.995-.995.995s-.995-.445-.995-.995.445-.995.995-.995.995.445.995.995zm0 3.984c0 .55-.445.995-.995.995s-.995-.445-.995-.995.445-.995.995-.995.995.445.995.995zm0 3.984c0 .775-.63 1.405-1.405 1.405s-1.405-.63-1.405-1.405.63-1.405 1.405-1.405 1.405.63 1.405 1.405zm0 4.394c0 .995-.81 1.805-1.805 1.805s-1.805-.81-1.805-1.805.81-1.805 1.805-1.805 1.805.81 1.805 1.805zm0 4.804c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2z"/>
-                                </svg>
-                                <span class="text-contrast-medium text-xs font-medium">Fitbit</span>
-                            </div>
-                            
-                            <!-- Garmin -->
-                            <div class="flex items-center space-x-2 bg-green/10 rounded-full px-3 py-1.5">
-                                <svg class="w-5 h-5 text-green" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12.219 24c-1.688 0-3.031-1.344-3.031-3.031V3.031C9.188 1.344 10.531 0 12.219 0h9.563c1.687 0 3.031 1.344 3.031 3.031v17.938c0 1.687-1.344 3.031-3.031 3.031H12.219zM2.219 8.344c-1.687 0-3.031 1.344-3.031 3.031v5.25c0 1.687 1.344 3.031 3.031 3.031 1.687 0 3.031-1.344 3.031-3.031v-5.25c0-1.687-1.344-3.031-3.031-3.031z"/>
-                                </svg>
-                                <span class="text-contrast-medium text-xs font-medium">Garmin</span>
-                            </div>
-                            
-                            <!-- MyFitnessPal -->
-                            <div class="flex items-center space-x-2 bg-green/10 rounded-full px-3 py-1.5">
-                                <svg class="w-5 h-5 text-green" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                                </svg>
-                                <span class="text-contrast-medium text-xs font-medium">MyFitnessPal</span>
-                            </div>
+                            <!-- ...existing app integration icons... -->
                         </div>
                     </div>
+                    <div class="flex justify-center items-center space-x-4 mt-6">
+                        <!-- Garmin Connect -->
+                        <a href="#" target="_blank" title="Garmin Connect">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Garmin_2024_logo.svg/1024px-Garmin_2024_logo.svg.png?20240813140007" alt="Garmin Connect" class="h-8 w-auto rounded">
+                        </a>
+                        <!-- Fitbit -->
+                        <a href="#" target="_blank" title="Fitbit">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Fitbit_logo.svg/360px-Fitbit_logo.svg.png?20150728214715" alt="Fitbit" class="h-4 w-auto rounded">
+                        </a>
+                        <!-- MyFitnessPal -->
+                        <a href="#" target="_blank" title="MyFitnessPal">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/6/63/MyFitnessPal_Logo.png" alt="MyFitnessPal" class="h-4 w-auto rounded bg-white">
+                        </a>
+                        <!-- Strava -->
+                        <a href="#" target="_blank" title="Strava">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Strava_Logo.svg/1024px-Strava_Logo.svg.png?20171014153709" alt="Strava" class="h-4 w-auto rounded">
+                        </a>
+                        <!-- Apple Health -->
+                        <a href="#" target="_blank" title="Apple Health">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Health_icon_iOS_12.png/128px-Health_icon_iOS_12.png" alt="Apple Health" class="h-4 w-auto rounded bg-white">
+                        </a>
+                        <!-- Samsung Health -->
+                        <a href="#" target="_blank" title="Samsung Health">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Samsung_Health_2025_logo.png/250px-Samsung_Health_2025_logo.png" alt="Samsung Health" class="h-4 w-auto rounded bg-white">
+                        </a>
+                    </div>
+                </div>
+
                 </div>
             </div>
         </div>
