@@ -274,8 +274,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevWhyButton = document.getElementById('prev-why');
     const nextWhyButton = document.getElementById('next-why');
     
-    let currentWhyIndex = 1; // Start with the middle card (Proven Results)
-    const totalWhyCards = 3;
+    let currentWhyIndex = 1; // Start with the second card (Proven Results)
+    const totalWhyCards = 4; // Updated to 4 cards
     
     if (mobileWhyContainer && whyScrollIndicators.length > 0) {
         // Handle scroll indicator clicks
