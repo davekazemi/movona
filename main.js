@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevWhyButton = document.getElementById('prev-why');
     const nextWhyButton = document.getElementById('next-why');
     
-    let currentWhyIndex = 1; // Start with the second card (Proven Results)
+    let currentWhyIndex = 0; // Start with the first card, but scroll to the second card (Proven Results) by default
     const totalWhyCards = 4; // Updated to 4 cards
     
     if (mobileWhyContainer && whyScrollIndicators.length > 0) {
@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Scroll to the middle card (Proven Results) on page load
         setTimeout(() => {
-            scrollToWhyCard(1);
+            scrollToWhyCard(0); // Start at the first card
         }, 200);
     }
 });
