@@ -155,7 +155,93 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-contrast mb-6">Why <span class="text-gradient">Movona?</span></h2>
                 <p class="text-contrast-medium text-xl max-w-3xl mx-auto">We combine proven scientific methods with personalized care to help you achieve lasting, transformative results</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
+            
+            <!-- Mobile: Horizontal scroll container -->
+            <div class="md:hidden relative pt-6">
+                <!-- Navigation Arrows -->
+                <button id="prev-why" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-green hover:bg-white hover:scale-110 transition-all duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="next-why" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-green hover:bg-white hover:scale-110 transition-all duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <div id="mobile-why-container" class="flex overflow-x-auto gap-4 px-12 pb-4 pt-4 scrollbar-hide snap-x snap-mandatory" style="scroll-behavior: smooth;">
+                    <!-- Card 1: Personalized Programs -->
+                    <div class="card-contrast rounded-3xl shadow-xl overflow-hidden card-hover w-72 flex-shrink-0 snap-center min-h-[400px]">
+                        <div class="relative">
+                            <div class="h-48 bg-gradient-to-br from-green/20 to-green/10 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-green rounded-2xl flex items-center justify-center shadow-lg">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 left-4 w-10 h-10 bg-green rounded-full flex items-center justify-center shadow-lg">
+                                <span class="text-white text-lg font-bold">1</span>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-3 text-contrast">Personalized Programs</h3>
+                            <p class="text-contrast-medium leading-relaxed text-sm">Your fitness journey is unique. We create custom workout and nutrition plans tailored to your specific goals, body type, and lifestyle preferences.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2: Proven Results -->
+                    <div class="card-contrast rounded-3xl shadow-xl overflow-hidden card-hover w-72 flex-shrink-0 snap-center min-h-[400px]">
+                        <div class="relative">
+                            <div class="h-48 bg-gradient-to-br from-green/20 to-green/10 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-green rounded-2xl flex items-center justify-center shadow-lg">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 left-4 w-10 h-10 bg-green rounded-full flex items-center justify-center shadow-lg">
+                                <span class="text-white text-lg font-bold">2</span>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-3 text-contrast">Proven Results</h3>
+                            <p class="text-contrast-medium leading-relaxed text-sm">With years of experience and a track record of success, we use evidence-based methods to help you achieve lasting results safely and efficiently.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3: Complete Support -->
+                    <div class="card-contrast rounded-3xl shadow-xl overflow-hidden card-hover w-72 flex-shrink-0 snap-center min-h-[400px]">
+                        <div class="relative">
+                            <div class="h-48 bg-gradient-to-br from-green/20 to-green/10 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-green rounded-2xl flex items-center justify-center shadow-lg">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 left-4 w-10 h-10 bg-green rounded-full flex items-center justify-center shadow-lg">
+                                <span class="text-white text-lg font-bold">3</span>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-3 text-contrast">Complete Support</h3>
+                            <p class="text-contrast-medium leading-relaxed text-sm">We're not just your trainers; we're your partners. We provide motivation, accountability, and ongoing support throughout your entire fitness journey.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scroll indicators -->
+                <div class="flex justify-center mt-4 space-x-2">
+                    <div class="w-2 h-2 bg-green/30 rounded-full why-scroll-indicator cursor-pointer"></div>
+                    <div class="w-2 h-2 bg-green/30 rounded-full why-scroll-indicator active cursor-pointer"></div>
+                    <div class="w-2 h-2 bg-green/30 rounded-full why-scroll-indicator cursor-pointer"></div>
+                </div>
+            </div>
+
+            <!-- Desktop: Grid layout -->
+            <div class="hidden md:grid md:grid-cols-3 gap-8">
                 <div class="card-contrast rounded-3xl shadow-xl overflow-hidden card-hover">
                     <div class="relative">
                         <div class="h-56 bg-gradient-to-br from-green/20 to-green/10 flex items-center justify-center">

@@ -267,4 +267,122 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+
+    // Why Movona section mobile scroll functionality
+    const mobileWhyContainer = document.getElementById('mobile-why-container');
+    const whyScrollIndicators = document.querySelectorAll('.why-scroll-indicator');
+    const prevWhyButton = document.getElementById('prev-why');
+    const nextWhyButton = document.getElementById('next-why');
+    
+    let currentWhyIndex = 1; // Start with the middle card (Proven Results)
+    const totalWhyCards = 3;
+    
+    if (mobileWhyContainer && whyScrollIndicators.length > 0) {
+        // Handle scroll indicator clicks
+        whyScrollIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                scrollToWhyCard(index);
+            });
+        });
+
+        // Handle arrow button clicks
+        if (prevWhyButton) {
+            prevWhyButton.addEventListener('click', () => {
+                if (currentWhyIndex > 0) {
+                    scrollToWhyCard(currentWhyIndex - 1);
+                }
+            });
+        }
+
+        if (nextWhyButton) {
+            nextWhyButton.addEventListener('click', () => {
+                if (currentWhyIndex < totalWhyCards - 1) {
+                    scrollToWhyCard(currentWhyIndex + 1);
+                }
+            });
+        }
+
+        // Function to scroll to specific why card
+        function scrollToWhyCard(index) {
+            const whyCards = mobileWhyContainer.querySelectorAll('.snap-center');
+            if (whyCards[index]) {
+                const cardWidth = 288 + 16; // card width + gap
+                const scrollLeft = index * cardWidth;
+                
+                mobileWhyContainer.scrollTo({
+                    left: scrollLeft,
+                    behavior: 'smooth'
+                });
+                
+                currentWhyIndex = index;
+                updateWhyActiveIndicator();
+                updateWhyArrowStates();
+            }
+        }
+
+        // Update active indicator based on current index
+        function updateWhyActiveIndicator() {
+            whyScrollIndicators.forEach((indicator, index) => {
+                if (index === currentWhyIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        // Update arrow button states
+        function updateWhyArrowStates() {
+            if (prevWhyButton) {
+                if (currentWhyIndex === 0) {
+                    prevWhyButton.classList.add('disabled');
+                    prevWhyButton.style.opacity = '0.5';
+                } else {
+                    prevWhyButton.classList.remove('disabled');
+                    prevWhyButton.style.opacity = '1';
+                }
+            }
+
+            if (nextWhyButton) {
+                if (currentWhyIndex === totalWhyCards - 1) {
+                    nextWhyButton.classList.add('disabled');
+                    nextWhyButton.style.opacity = '0.5';
+                } else {
+                    nextWhyButton.classList.remove('disabled');
+                    nextWhyButton.style.opacity = '1';
+                }
+            }
+        }
+
+        // Listen to scroll events for updating indicators
+        let whyScrollTimeout;
+        mobileWhyContainer.addEventListener('scroll', () => {
+            clearTimeout(whyScrollTimeout);
+            whyScrollTimeout = setTimeout(() => {
+                updateWhyCurrentIndexFromScroll();
+            }, 100);
+        });
+
+        // Update current index based on scroll position
+        function updateWhyCurrentIndexFromScroll() {
+            const scrollLeft = mobileWhyContainer.scrollLeft;
+            const cardWidth = 288 + 16; // card width + gap
+            const newIndex = Math.round(scrollLeft / cardWidth);
+            
+            if (newIndex !== currentWhyIndex && newIndex >= 0 && newIndex < totalWhyCards) {
+                currentWhyIndex = newIndex;
+                updateWhyActiveIndicator();
+                updateWhyArrowStates();
+            }
+        }
+        
+        // Set initial states and scroll to middle card
+        updateWhyActiveIndicator();
+        updateWhyArrowStates();
+        
+        // Scroll to the middle card (Proven Results) on page load
+        setTimeout(() => {
+            scrollToWhyCard(1);
+        }, 200);
+    }
 });
