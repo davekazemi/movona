@@ -54,6 +54,127 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Mobile plans scroll functionality
+    const mobileScrollContainer = document.getElementById('mobile-plans-container');
+    const scrollIndicators = document.querySelectorAll('.scroll-indicator');
+    const prevButton = document.getElementById('prev-plan');
+    const nextButton = document.getElementById('next-plan');
+    
+    let currentPlanIndex = 1; // Start with the middle card (Progression - Most Popular)
+    const totalPlans = 3;
+    
+    if (mobileScrollContainer && scrollIndicators.length > 0) {
+        // Handle scroll indicator clicks
+        scrollIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                scrollToPlan(index);
+            });
+        });
+
+        // Handle arrow button clicks
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                if (currentPlanIndex > 0) {
+                    scrollToPlan(currentPlanIndex - 1);
+                }
+            });
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                if (currentPlanIndex < totalPlans - 1) {
+                    scrollToPlan(currentPlanIndex + 1);
+                }
+            });
+        }
+
+        // Function to scroll to specific plan
+        function scrollToPlan(index) {
+            const plans = mobileScrollContainer.querySelectorAll('.snap-center');
+            if (plans[index]) {
+                const planCard = plans[index];
+                const containerRect = mobileScrollContainer.getBoundingClientRect();
+                const cardRect = planCard.getBoundingClientRect();
+                const scrollLeft = mobileScrollContainer.scrollLeft + cardRect.left - containerRect.left - (containerRect.width - cardRect.width) / 2;
+                
+                mobileScrollContainer.scrollTo({
+                    left: scrollLeft,
+                    behavior: 'smooth'
+                });
+                
+                currentPlanIndex = index;
+                updateActiveIndicator();
+                updateArrowStates();
+            }
+        }
+
+        // Update active indicator based on current index
+        function updateActiveIndicator() {
+            scrollIndicators.forEach((indicator, index) => {
+                if (index === currentPlanIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        // Update arrow button states
+        function updateArrowStates() {
+            if (prevButton) {
+                if (currentPlanIndex === 0) {
+                    prevButton.classList.add('disabled');
+                    prevButton.style.opacity = '0.5';
+                } else {
+                    prevButton.classList.remove('disabled');
+                    prevButton.style.opacity = '1';
+                }
+            }
+
+            if (nextButton) {
+                if (currentPlanIndex === totalPlans - 1) {
+                    nextButton.classList.add('disabled');
+                    nextButton.style.opacity = '0.5';
+                } else {
+                    nextButton.classList.remove('disabled');
+                    nextButton.style.opacity = '1';
+                }
+            }
+        }
+
+        // Listen to scroll events for updating indicators
+        let scrollTimeout;
+        mobileScrollContainer.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                updateCurrentIndexFromScroll();
+            }, 100);
+        });
+
+        // Update current index based on scroll position
+        function updateCurrentIndexFromScroll() {
+            const scrollLeft = mobileScrollContainer.scrollLeft;
+            const containerWidth = mobileScrollContainer.clientWidth;
+            const cardWidth = 288 + 16; // card width + gap
+            const newIndex = Math.round(scrollLeft / cardWidth);
+            
+            if (newIndex !== currentPlanIndex && newIndex >= 0 && newIndex < totalPlans) {
+                currentPlanIndex = newIndex;
+                updateActiveIndicator();
+                updateArrowStates();
+            }
+        }
+        
+        // Set initial states and scroll to middle card
+        updateActiveIndicator();
+        updateArrowStates();
+        
+        // Scroll to the middle card (Progression) on page load
+        setTimeout(() => {
+            scrollToPlan(1);
+        }, 100);
+    }
+
     // Initialize plan buttons with default monthly links
     function updatePlanButtonLinks(billingType = 'monthly') {
         const planButtons = document.querySelectorAll('.plan-button');

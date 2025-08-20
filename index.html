@@ -352,7 +352,109 @@
                     <span class="ml-2 bg-green/10 text-green text-sm px-2 py-1 rounded-full font-semibold">Save 20%</span>
                 </div>
             </div>
-            <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Mobile: Horizontal scroll container -->
+            <div class="lg:hidden relative pt-6">
+                <!-- Navigation Arrows -->
+                <button id="prev-plan" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-green hover:bg-white hover:scale-110 transition-all duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="next-plan" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-green hover:bg-white hover:scale-110 transition-all duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <div id="mobile-plans-container" class="flex overflow-x-auto gap-4 px-12 pb-4 pt-4 scrollbar-hide snap-x snap-mandatory" style="scroll-behavior: smooth;">
+                    <!-- Plan 1: Starter -->
+                    <div class="card-contrast p-6 rounded-3xl shadow-xl flex flex-col card-hover border-2 border-gray-100 hover:border-green/30 relative w-72 flex-shrink-0 snap-center min-h-[500px]">
+                        <div class="text-center mb-4">
+                            <div class="w-12 h-12 bg-green/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-contrast mb-2 leading-tight">Foundation</h3>
+                            <p class="text-contrast-medium mb-4 text-sm leading-relaxed">Build your base and stay consistent</p>
+                            <div class="mb-4">
+                                <span class="text-2xl font-bold text-contrast plan-price" data-monthly="80" data-annual="800">$80</span>
+                                <span class="text-contrast-light text-sm plan-period">/month</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-contrast-medium mb-6 flex-grow text-xs leading-relaxed">
+                            <li class="flex items-start"><span class="text-green mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Access to the training app</span></li>
+                            <li class="flex items-start"><span class="text-green mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Monthly updated workout plans</span></li>
+                            <li class="flex items-start"><span class="text-green mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Group support & accountability</span></li>
+                            <li class="flex items-start"><span class="text-green mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Access to fitness tips & video library</span></li>
+                        </ul>
+                        <a href="#contact-foundation" class="plan-button w-full text-center bg-purple text-white py-3 px-4 rounded-full hover:bg-purple/90 hover:scale-105 transition-all duration-300 font-semibold shadow-lg text-sm mt-auto" data-monthly="#contact-foundation-monthly" data-annual="#contact-foundation-annual">Choose Plan</a>
+                    </div>
+                    
+                    <!-- Plan 2: Personal Training (Most Popular) -->
+                    <div class="card-contrast text-contrast p-6 rounded-3xl shadow-2xl flex flex-col relative card-hover border-2 border-green/30 w-72 flex-shrink-0 snap-center min-h-[500px]">
+                        <span class="absolute -top-1 bg-green text-white text-xs font-bold px-3 py-1.5 rounded-full left-1/2 -translate-x-1/2 shadow-xl z-20 whitespace-nowrap">Most Popular</span>
+                        <div class="text-center mb-4">
+                            <div class="w-12 h-12 bg-green/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 leading-tight">Progression</h3>
+                            <p class="text-contrast-medium mb-4 text-sm leading-relaxed">Step up with personalized coaching and guidance</p>
+                            <div class="mb-4">
+                                <span class="text-2xl font-bold text-contrast plan-price" data-monthly="120" data-annual="1200">$120</span>
+                                <span class="text-contrast-light text-sm plan-period">/month</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-contrast-medium mb-6 flex-grow text-xs leading-relaxed">
+                            <li class="flex items-start"><span class="text-green mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Everything in Foundation</span></li>
+                            <li class="flex items-start"><span class="text-green mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Fully personalized workout plan</span></li>
+                            <li class="flex items-start"><span class="text-green mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">One coaching session (in-person or online)</span></li>
+                            <li class="flex items-start"><span class="text-green mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Progress tracking with regular check-ins</span></li>
+                            <li class="flex items-start"><span class="text-green mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Form reviews (via video or live)</span></li>
+                            <li class="flex items-start"><span class="text-green mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Direct messaging for questions</span></li>
+                        </ul>
+                        <a href="#contact-basic" class="plan-button w-full text-center bg-green text-white py-3 px-4 rounded-full font-bold hover:bg-green/90 hover:scale-105 transition-all duration-300 shadow-lg text-sm mt-auto" data-monthly="#contact-basic-monthly" data-annual="#contact-basic-annual">Choose Plan</a>
+                    </div>
+                    
+                    <!-- Plan 3: Transformation Package -->
+                    <div class="card-contrast p-6 rounded-3xl shadow-xl flex flex-col card-hover border-2 border-gray-100 hover:border-purple/30 relative w-72 flex-shrink-0 snap-center min-h-[500px]">
+                        <div class="text-center mb-4">
+                            <div class="w-12 h-12 bg-purple/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-contrast mb-2 leading-tight">Transformation</h3>
+                            <p class="text-contrast-medium mb-4 text-sm leading-relaxed">Achieve your best with complete training & nutrition support</p>
+                            <div class="mb-4">
+                                <span class="text-2xl font-bold text-contrast plan-price" data-monthly="200" data-annual="2000">$200</span>
+                                <span class="text-contrast-light text-sm plan-period">/month</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-contrast-medium mb-6 flex-grow text-xs leading-relaxed">
+                            <li class="flex items-start"><span class="text-purple mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Everything in Progression</span></li>
+                            <li class="flex items-start"><span class="text-purple mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Two personal training sessions per month (in-person or online)</span></li>
+                            <li class="flex items-start"><span class="text-purple mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Customized nutrition planning & guidance</span></li>
+                            <li class="flex items-start"><span class="text-purple mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Plan revisions as needed to match progress</span></li>
+                            <li class="flex items-start"><span class="text-purple mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Lifestyle & habit coaching</span></li>
+                            <li class="flex items-start"><span class="text-purple mr-2 text-sm mt-0.5 flex-shrink-0">•</span><span class="break-words">Priority support and scheduling</span></li>
+                        </ul>
+                        <a href="#contact-premium" class="plan-button w-full text-center bg-purple text-white py-3 px-4 rounded-full hover:bg-purple/90 hover:scale-105 transition-all duration-300 font-semibold shadow-lg text-sm mt-auto" data-monthly="#contact-premium-monthly" data-annual="#contact-premium-annual">Choose Plan</a>
+                    </div>
+                </div>
+                
+                <!-- Scroll indicators -->
+                <div class="flex justify-center mt-4 space-x-2">
+                    <div class="w-2 h-2 bg-green/30 rounded-full scroll-indicator cursor-pointer"></div>
+                    <div class="w-2 h-2 bg-green/30 rounded-full scroll-indicator active cursor-pointer"></div>
+                    <div class="w-2 h-2 bg-green/30 rounded-full scroll-indicator cursor-pointer"></div>
+                </div>
+            </div>
+
+            <!-- Desktop: Grid layout -->
+            <div class="hidden lg:grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Plan 1: Starter -->
                 <div class="card-contrast p-10 rounded-3xl shadow-xl flex flex-col card-hover border-2 border-gray-100 hover:border-green/30 relative">
                     <div class="text-center mb-8">
@@ -362,20 +464,17 @@
                             </svg>
                         </div>
                         <h3 class="text-3xl font-bold text-contrast mb-2">Foundation</h3>
-                        <p class="text-contrast-medium mb-6">Perfect for beginners starting their fitness journey.</p>
+                        <p class="text-contrast-medium mb-6">Build your base and stay consistent</p>
                         <div class="mb-8">
                             <span class="text-5xl font-bold text-contrast plan-price" data-monthly="80" data-annual="800">$80</span>
                             <span class="text-contrast-light text-lg plan-period">/month</span>
                         </div>
                     </div>
                     <ul class="space-y-4 text-contrast-medium mb-10 flex-grow">
-                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> Customized workout program</li>
-                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> Monthly program updates</li>
-                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> Exercise video demonstrations</li>
-                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> Progress tracking tools</li>
-                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> Email support</li>
-                        <li class="flex items-center text-contrast-light/60"><span class="mr-3 text-xl">×</span> Personal training sessions</li>
-                        <li class="flex items-center text-contrast-light/60"><span class="mr-3 text-xl">×</span> Nutrition planning</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">•</span> Access to the training app</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">•</span> Monthly updated workout plans</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">•</span> Group support & accountability</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">•</span> Access to fitness tips & video library</li>
                     </ul>
                     <a href="#contact-foundation" class="plan-button w-full text-center bg-purple text-white py-4 px-6 rounded-full hover:bg-purple/90 hover:scale-105 transition-all duration-300 font-semibold shadow-lg" data-monthly="#contact-foundation-monthly" data-annual="#contact-foundation-annual">Choose Plan</a>
                 </div>
@@ -389,20 +488,20 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                             </svg>
                         </div>
-                        <h3 class="text-3xl font-bold mb-2">Personal Training</h3>
-                        <p class="text-contrast-medium mb-6">Dedicated 1-on-1 coaching for serious results.</p>
+                        <h3 class="text-3xl font-bold mb-2">Progression</h3>
+                        <p class="text-contrast-medium mb-6">Step up with personalized coaching and guidance</p>
                         <div class="mb-8">
                             <span class="text-5xl font-bold text-contrast plan-price" data-monthly="120" data-annual="1200">$120</span>
                             <span class="text-contrast-light text-lg plan-period">/month</span>
                         </div>
                     </div>
                     <ul class="space-y-4 text-contrast-medium mb-10 flex-grow">
-                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> 1 x 60min personal training session per week</li>
-                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> Personalized workout program</li>
-                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> Weekly progress assessments</li>
-                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> Basic nutrition guidance</li>
-                        <li class="flex items-center"><span class="text-green mr-3 text-xl">✓</span> WhatsApp support (Mon-Fri)</li>
-                        <li class="flex items-center text-contrast-light/60"><span class="mr-3 text-xl">×</span> Meal planning</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">•</span> Everything in Foundation</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">•</span> Fully personalized workout plan</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">•</span> One coaching session (in-person or online)</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">•</span> Progress tracking with regular check-ins</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">•</span> Form reviews (via video or live)</li>
+                        <li class="flex items-center"><span class="text-green mr-3 text-xl">•</span> Direct messaging for questions</li>
                     </ul>
                     <a href="#contact-basic" class="plan-button w-full text-center bg-green text-white py-4 px-6 rounded-full font-bold hover:bg-green/90 hover:scale-105 transition-all duration-300 shadow-lg" data-monthly="#contact-basic-monthly" data-annual="#contact-basic-annual">Choose Plan</a>
                 </div>
@@ -416,20 +515,19 @@
                             </svg>
                         </div>
                         <h3 class="text-3xl font-bold text-contrast mb-2">Transformation</h3>
-                        <p class="text-contrast-medium mb-6">Complete lifestyle transformation with maximum support.</p>
+                        <p class="text-contrast-medium mb-6">Achieve your best with complete training & nutrition support</p>
                         <div class="mb-8">
                             <span class="text-5xl font-bold text-contrast plan-price" data-monthly="200" data-annual="2000">$200</span>
                             <span class="text-contrast-light text-lg plan-period">/month</span>
                         </div>
                     </div>
                     <ul class="space-y-4 text-contrast-medium mb-10 flex-grow">
-                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">✓</span> 2 x 60min personal training sessions per week</li>
-                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">✓</span> Comprehensive nutrition coaching</li>
-                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">✓</span> Weekly body composition tracking</li>
-                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">✓</span> Personalized meal plans & recipes</li>
-                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">✓</span> 24/7 WhatsApp support</li>
-                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">✓</span> Supplement recommendations</li>
-                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">✓</span> Monthly lifestyle coaching calls</li>
+                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">•</span> Everything in Progression</li>
+                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">•</span> Two personal training sessions per month (in-person or online)</li>
+                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">•</span> Customized nutrition planning & guidance</li>
+                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">•</span> Plan revisions as needed to match progress</li>
+                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">•</span> Lifestyle & habit coaching</li>
+                        <li class="flex items-center"><span class="text-purple mr-3 text-xl">•</span> Priority support and scheduling</li>
                     </ul>
                     <a href="#contact-premium" class="plan-button w-full text-center bg-purple text-white py-4 px-6 rounded-full hover:bg-purple/90 hover:scale-105 transition-all duration-300 font-semibold shadow-lg" data-monthly="#contact-premium-monthly" data-annual="#contact-premium-annual">Choose Plan</a>
                 </div>
